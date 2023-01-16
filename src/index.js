@@ -2,7 +2,9 @@
 
 import express from 'express'
 
-// import ProductManager from "./ProductManager.js"
+import ProductManager from './ProductManager.js'
+
+const Productos = new ProductManager()
 
 const app = express()
 
@@ -43,9 +45,9 @@ app.get("/users/:idUser", (req, res) => {
   res.send(users[idUser])
 })
 
-app.get("/products/", (req, res) => {
+app.get("/products", (req, res) => {
   const { limit } = req.params
-  res.send(productos)
+  res.send(Productos)
 })
 
 app.get("/products/:idUser", (req, res) => {
@@ -68,10 +70,6 @@ app.get("/admins", (req, res) => {
 app.listen(8080, () => {
   console.log("Running from express")
 })
-
-
-
-
 
 
 

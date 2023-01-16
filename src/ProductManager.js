@@ -3,16 +3,13 @@ const { titulo } = require('process')
 
 
 
-// CLASES
 
-class GestorDeProductos {
+export default class ProductManager {
 
     constructor() {
         this.productos = []
         this.path = './archivos/productos.json'
     }
-
-    // FUNCIONES
 
     async getProducts() {
         try {
@@ -105,7 +102,6 @@ class GestorDeProductos {
         }
     }
 
-
     #generarId() {
         let id =
             this.productos.length === 0
@@ -123,4 +119,8 @@ class GestorDeProductos {
     }
 }
 
-const product = new GestorDeProductos()
+
+
+// module.exports = {
+//     ProductManager
+// }
