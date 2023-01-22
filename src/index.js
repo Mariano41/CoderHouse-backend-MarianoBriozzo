@@ -25,6 +25,8 @@ const users = [{
 }
 ]
 
+app.use('/users', router)
+
 app.use(express.urlencoded({ extended: true }))
 
 app.get("/bienvenida", (req, res) => {
