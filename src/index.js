@@ -66,6 +66,35 @@ app.get("/admins", (req, res) => {
   res.send(users)
 })
 
+app.post('/', (req, res) =>{
+  const {name, country } = req.body
+  users.push({name, country})
+  res.status(201).json({status: 201, message: 'Usuario Creado'})
+  // res.status(500).json({status: 500, error: 'internal error'})
+  res.send('Hi server with post')
+})
+
+app.put('/users/:id', (req, res) =>{
+  const {id} = req.params
+  const {name, country} = req.body
+  const infoUser = {
+    name, country
+  }
+
+if (!name) res.status(400).json('error: no se encuentra el name')
+if (!country) res.status(400).json('error: no se encuentra el country')
+
+  const myId = Number (id)
+  const userPos = users.findIndex(user => user.id === myId)
+  users[userPos] = {
+    userId,
+    ...infoUser
+  }
+  res.json({message: 'usuario actualizado'})
+})
+
+app.delete('/users/:id', (req, res) =>{
+})
 
 app.listen(8080, () => {
   console.log("Running from express")
